@@ -6,53 +6,64 @@ var humidity = document.querySelector(".humidity");
 var wind = document.querySelector(".wind");
 var uvi = document.querySelector(".uvi");
 
-var searchSubmitHandler = function(event) {
-    event.preventDefault;
+var searchSubmitHandler = function (event) {
+  event.preventDefault;
 
-    var city = searchInput.value.trim();
+  var city = searchInput.value.trim();
 
-    if (city) {
-        getCityWeather(city);
+  if (city) {
+    getCityWeather(city);
 
-        searchInput.value = "";
-    } else {
-        alert("Please enter a city");
-    }
+    searchInput.value = "";
+  } else {
+    alert("Please enter a city");
+  }
 };
 
-    searchBtn.addEventListener("click", function() {
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q="+ searchInput.value + "&appid=9795009f60d5d1c3afe4e6df6002c319"
+searchBtn.addEventListener("click", function () {
+  var apiUrl =
+    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    searchInput.value +
+    "&appid=9795009f60d5d1c3afe4e6df6002c319";
 
-    fetch(apiUrl)
+  fetch(apiUrl)
     // promise
-    .then(function(response) {
-        if(response.ok) {
-            console.log(response);
-            response.json().then(function(data) {
-                var nameValue = data["name"];
-                var tempValue = data["main"]["temp"];
-                var humidityValue = data["main"]["humidity"];
-                var windValue = data["wind"]["speed"];
-                var uviValue = data["uvi"]
+    .then(function (response) {
+      if (response.ok) {
+        console.log(response);
+        response.json().then(function (data) {
+          var nameValue = data["name"];
+          var tempValue = data["main"]["temp"];
+          var humidityValue = data["main"]["humidity"];
+          var windValue = data["wind"]["speed"];
+          console.log(data);
+        });
+      } else {
+        alert("Error: " + response.statusText);
+      }
 
-
-            });
-
-                console.log(data);
-            
-        } else {
-            alert("Error: " + response.statusText);
-        }
-
-        // cityDateIcon.innerHTML = 
+      // cityDateIcon.innerHTML =
     })
     // promise
-    .catch(function(error) {
-        alert("Unable to connect to OpenWeatherMap");
-    })
-})
+    .catch(function (error) {
+      alert("Unable to connect to OpenWeatherMap");
+    });
+});
 
-
+function uvIndex(lat, lon) {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid=9795009f60d5d1c3afe4e6df6002c319"
+  ).then(function (response) {
+    if (response.ok) {
+      console.log(response);
+      response.json().then(function (data) {
+        console.log(data);
+        uvIndex(data.coord.lat, data.coord.lon);
+        // var uviValue = data["uvi"];
+      });
+    }
+  });
+}
 
 // search for city, get current and future conditions
 
