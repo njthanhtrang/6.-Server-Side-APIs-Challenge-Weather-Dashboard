@@ -29,18 +29,20 @@
 
   <body>
     <header>
-      <h1>Weather Dashboard</h1>
+      <h1><strong>Weather Dashboard</strong></h1>
     </header>
 
     <main class="container">
       <!-- jumbotron -->
       <!-- cards -->
       <div class="row">
-        <div class="col-sm-4">
-          <h3>Search for a City:</h3>
+        <div class="col-sm-3">
+          <h4 class="searchCityHeader">Search for a City:</h4>
           <input type="text" class="inputValue" placeholder="Enter your city" />
-          <button class="searchBtn">
-            <span class="oi oi-magnifying-glass"></span>
+          <button class="searchBtn btn btn-primary">
+            <i>
+              <span class="oi oi-magnifying-glass"></span>
+            </i>
           </button>
 
           <ul class="cities">
@@ -48,21 +50,26 @@
           </ul>
         </div>
 
-        <div class="col-sm-8 display">
+        <div class="col-sm-9 display">
           <!-- JUMBO city, date, temp, humidity, wind speed, uvi -->
-          <div class="current-weather">
-            <h2 class="city-date-icon">
-            </h2>
+          <div class="current-weather hide card">
+            <h2 class="city-date-icon"></h2>
             <p class="temp"></p>
             <p class="humidity"></p>
             <p class="wind"></p>
-            <p class="uvi"></p>
+            <p class="uvi">
+              UV Index:
+              <!-- i inline block -->
+              <i class="uviValue"></i>
+            </p>
           </div>
 
           <!-- 5 day forecast -->
           <!-- <h4>5-Day Forecast</h4> -->
           <!-- display flex -->
-          <div class="d-flex 5-day-forecast">
+          <div class="d-flex five-day-forecast">
+            <h3 class="fiveDayHeader"></h3>
+            <br />
             <!-- cards with JS -->
             <div id="cards" class="col-12 d-flex"></div>
           </div>
