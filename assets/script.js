@@ -47,7 +47,7 @@ var searchSubmitHandler = function (event) {
 
 async function getWeather(city) {
     var apiUrl =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&units=imperial&appid=9795009f60d5d1c3afe4e6df6002c319";
   
@@ -65,7 +65,7 @@ async function getWeather(city) {
       var icon = data.weather[0].icon;
   
       //weatherIcon.src
-      var weatherURL = `http://openweathermap.org/img/wn/${icon}.png`;
+      var weatherURL = `https://openweathermap.org/img/wn/${icon}.png`;
       var icon = `<img src="${weatherURL}"/>`;
   
       cityDateIcon.innerHTML =
@@ -166,7 +166,7 @@ async function uvIndex(lat, lon) {
       var cardTemp = cardData.temp.day;
       var cardHumidity = cardData.humidity;
       var iconImage = cardData.weather[0].icon;
-      var weatherURL = `http://openweathermap.org/img/wn/${iconImage}.png`;
+      var weatherURL = `https://openweathermap.org/img/wn/${iconImage}.png`;
       var icon = `<img src="${weatherURL}" style="width: 75px"/>`;
       cardString += `
             <div class="card fiveDayCard" style="flex: 1">
