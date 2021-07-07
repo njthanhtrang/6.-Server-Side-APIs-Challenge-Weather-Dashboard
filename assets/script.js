@@ -9,6 +9,7 @@ var wind = document.querySelector(".wind");
 var uvi = document.querySelector(".uvi");
 var recentSearches = JSON.parse(localStorage.getItem("recents") || "[]");
 var recentContainer = $("#recent");
+var clear = $("clearHistory");
 
 renderRecents();
 
@@ -81,7 +82,8 @@ async function getWeather(city) {
           } else {
               return true;
           }
-      });
+      }
+      );
 
       //   searchInput.textContent = "";
     } else {
@@ -89,13 +91,28 @@ async function getWeather(city) {
     }
   };
 
+  function setLocalStorage(city) {
+    if (recentSearches.indexOf(city) === -1) {
+      recentSearches.push(city);
+      localStorage.setItem("recents", JSON.stringify(recentSearches));
+    }
+  }
+
 searchBtn.addEventListener("click", () => {
     getWeather(searchInput.value);
+setLocalStorage();
+renderRecents();
 });
 // promise
 // .catch(function (error) {
 //   alert("Unable to connect to OpenWeatherMap");
 // });
+
+clear.on("click", function() {
+  localStorage.removeItem("recents");
+  recentSearches.length = 0;
+  renderRecents();
+});
 
 async function uvIndex(lat, lon) {
   var uviUrl =
