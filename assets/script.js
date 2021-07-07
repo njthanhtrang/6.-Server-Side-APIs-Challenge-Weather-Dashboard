@@ -9,7 +9,7 @@ var wind = document.querySelector(".wind");
 var uvi = document.querySelector(".uvi");
 var recentSearches = JSON.parse(localStorage.getItem("recents") || "[]");
 var recentContainer = $("#recent");
-var clear = $("clearHistory");
+var clear = $("#clearHistory");
 
 renderRecents();
 
@@ -100,7 +100,7 @@ async function getWeather(city) {
 
 searchBtn.addEventListener("click", () => {
     getWeather(searchInput.value);
-setLocalStorage();
+setLocalStorage(searchInput.value);
 renderRecents();
 });
 // promise
