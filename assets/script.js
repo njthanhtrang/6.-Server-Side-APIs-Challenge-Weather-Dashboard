@@ -9,6 +9,7 @@ var wind = document.querySelector(".wind");
 var uvi = document.querySelector(".uvi");
 var recentSearches = JSON.parse(localStorage.getItem("recents") || "[]");
 var recentContainer = $("#recent");
+var inputValue = $("#inputValue");
 var clear = $("#clearHistory");
 
 renderRecents();
@@ -39,8 +40,8 @@ var searchSubmitHandler = function (event) {
     getCityWeather(city);
 
     searchInput.value = "";
-  } else {
-    alert("Please enter a city");
+  } else if (userInput == "") {
+    alert("Please enter a city!");
   }
 };
 
@@ -99,10 +100,17 @@ async function getWeather(city) {
   }
 
 searchBtn.addEventListener("click", () => {
+  var userInput = inputValue.val().trim();
+  if (userInput !== "") {
     getWeather(searchInput.value);
-setLocalStorage(searchInput.value);
+    setLocalStorage(searchInput.value);
 renderRecents();
+    inputValue.val("");
+  } else if (userInput == "") {
+alert("Please enter a city!");
+  }
 });
+
 // promise
 // .catch(function (error) {
 //   alert("Unable to connect to OpenWeatherMap");
