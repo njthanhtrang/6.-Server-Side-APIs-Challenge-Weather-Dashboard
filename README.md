@@ -13,6 +13,7 @@ Project link: https://njthanhtrang.github.io/6.-Server-Side-APIs-Challenge-Weath
 ​
 * [Usage](#usage)
 * [Credits](#credits)
+* [Questions] (#questions)
 * [License](#license)
 
 ## Built With
@@ -33,6 +34,10 @@ or open the index.html file in your local browser.
 ​
 ## Credits
 ​Made with https://openweathermap.org/api/one-call-api by Jennifer Nguyen and guidance of TAs Wesley, Aliff, John Baxter, and John Blackwell.
+
+## Questions
+For additional questions and information, please go to github.com/njthanhtrang/
+or reach out via email at njthanhtrang@gmail.com.
 ​
 ## License
 ​
