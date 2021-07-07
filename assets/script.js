@@ -8,6 +8,26 @@ var humidity = document.querySelector(".humidity");
 var wind = document.querySelector(".wind");
 var uvi = document.querySelector(".uvi");
 var recentSearches = JSON.parse(localStorage.getItem("recents") || "[]");
+var recentContainer = $("#recent");
+
+renderRecents();
+
+// History of previously searched cities
+function renderRecents() {
+  recentContainer.empty();
+
+  for (let i = 0; i < recentSearches.length; i++) {
+    var recentInput = $("<input>");
+    recentInput.attr("type", "text");
+    recentInput.attr("readonly", true);
+    recentInput.attr("class", "form-control-lg text-black");
+    recentInput.attr("value", recentSearches[i]);
+    recentInput.on("click", function() {
+      getWeather($(this).attr("value"));
+    });
+    recentContainer.append(recentInput);
+  }
+}
 
 var searchSubmitHandler = function (event) {
   event.preventDefault;

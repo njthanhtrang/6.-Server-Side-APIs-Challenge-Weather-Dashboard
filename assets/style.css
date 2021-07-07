@@ -26,9 +26,9 @@ h3 {
     margin: 10px;
 }
 
-/* input {
+input {
     margin-left: 10px;
-} */
+}
 
 .five-day-forecast {
     flex-direction: column;
