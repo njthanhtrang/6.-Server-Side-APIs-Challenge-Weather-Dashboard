@@ -13,7 +13,7 @@ Project link: https://njthanhtrang.github.io/6.-Server-Side-APIs-Challenge-Weath
 ​
 * [Usage](#usage)
 * [Credits](#credits)
-* [Questions] (#questions)
+* [Questions](#questions)
 * [License](#license)
 
 ## Built With
